@@ -50,9 +50,9 @@ features_mean = np.array([53.543606, 0, 132.44331, 200.87064, 0, 137.21948, 0.88
 features_std = np.array([9.401315, 1, 18.674374, 105.91235,  1, 25.254976, 1.0505422, 1, 1, 1, 1, 1, 1, 1, 1]).reshape(1,-1)
 
 chest_pain_types = np.array(["Atypical Angina (ATA)", "Non-Anginal Pain (NAP)", "Typical Angina (TA)"])
-resting_ecg_types = np.array(["LVH (showing probable or definite left ventricular hypertrophy by Estes' criteria)",
+resting_ecg_types = np.array(["LVH (showing probable or definite left ventricular hypertrophy by Estes' criteria)", "Normal",
                             "ST (having ST-T wave abnormality; T wave inversions and/or ST elevation or depression of > 0.05 mV)"])
-st_slope_types = np.array(["Downsloping", "Upsloping"])
+st_slope_types = np.array(["Downsloping", "Flat", "Upsloping"])
 
 # Quantitative Data
 st.write("# Heart Disease Diagnosis Tool")
@@ -71,10 +71,9 @@ resting_ecg_input = st.radio("Resting ECG Results", ('Normal', 'ST (having ST-T 
 exercise_angina_input = st.radio("Exercise-Induced Angina", ('Yes', 'No'))
 st_slope_input = st.radio("ST Slope (the slope of the peak exercise ST segment)", ('Upsloping', 'Flat', 'Downsloping'))
 
-features_list = [age, int(sex_input == "Male"), sbp, chol, int(fasting_bs_input == "≥ 120 mg/dL"), maxHR, old_peak]
+features_list = [age, int(sex_input == "Male"), sbp, chol, int(fasting_bs_input == "≥ 120 mg/dL"), maxHR, int(exercise_angina_input == "Yes"), old_peak]
 features_list += (chest_pain_types == chest_pain_type_input).astype(int).tolist()
 features_list += (resting_ecg_types == resting_ecg_input).astype(int).tolist()
-features_list += [int(exercise_angina_input == "Yes")]
 features_list += (st_slope_types == st_slope_input).astype(int).tolist()
 features = np.array(features_list).reshape(1,-1)
 # st.write(features)
