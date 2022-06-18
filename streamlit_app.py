@@ -5,7 +5,7 @@ from tensorflow.keras import *
 from tensorflow.keras import layers
 import numpy as np
 
-hidden_units = 32
+hidden_units = 64
 dropout_rate = 0.2
 
 layers_dimensions = [hidden_units,hidden_units,hidden_units,hidden_units,hidden_units,hidden_units,hidden_units,hidden_units]
