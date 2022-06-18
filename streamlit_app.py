@@ -11,8 +11,8 @@ dropout_rate = 0.2
 layers_dimensions = [hidden_units,hidden_units,hidden_units,hidden_units,hidden_units,hidden_units,hidden_units,hidden_units]
 initializer = tf.keras.initializers.GlorotNormal(seed=0)
 model_nn = keras.Sequential([
-                            layers.BatchNormalization(input_shape=[15]),
-                            layers.Dense(layers_dimensions[0],kernel_initializer=initializer,bias_initializer='zeros'),
+                            layers.BatchNormalization(input_shape=[X_t.shape[1]]),
+                            layers.Dense(layers_dimensions[0],kernel_initializer=initializer,bias_initializer='zeros'), 
                             layers.BatchNormalization(),
                             layers.Activation("relu"),
                             layers.Dropout(rate=dropout_rate),
@@ -31,19 +31,6 @@ model_nn = keras.Sequential([
                             layers.Dense(layers_dimensions[4],kernel_initializer=initializer,bias_initializer='zeros'),
                             layers.BatchNormalization(),
                             layers.Activation("relu"),
-                            layers.Dropout(rate=dropout_rate),
-                            layers.Dense(layers_dimensions[5],kernel_initializer=initializer,bias_initializer='zeros'),
-                            layers.BatchNormalization(),
-                            layers.Activation("relu"),
-                            layers.Dropout(rate=dropout_rate),
-                            layers.Dense(layers_dimensions[6],kernel_initializer=initializer,bias_initializer='zeros'),
-                            layers.BatchNormalization(),
-                            layers.Activation("relu"),
-                            layers.Dropout(rate=dropout_rate),
-                            layers.Dense(layers_dimensions[7],kernel_initializer=initializer,bias_initializer='zeros'),
-                            layers.BatchNormalization(),
-                            layers.Activation("relu"),
-                            layers.Dropout(rate=dropout_rate),
                             layers.Dense(1,kernel_initializer=initializer,bias_initializer='zeros'),
                             layers.Activation("sigmoid")
 ])
@@ -57,7 +44,7 @@ model_nn.compile(optimizer="adam",loss="binary_crossentropy",metrics=["binary_ac
 # history_nn_pd = pd.DataFrame(history_nn.history)
 
 # Load Model Weights
-model_nn.load_weights("cardio_model_weights.h5")
+model_nn.load_weights("cardiovascular_model_weights.h5")
 
 features_mean = np.array([53.543606, 0, 132.44331, 200.87064, 0, 137.21948, 0.8822674, 0, 0, 0, 0, 0, 0, 0, 0]).reshape(1,-1)
 features_std = np.array([9.401315, 1, 18.674374, 105.91235,  1, 25.254976, 1.0505422, 1, 1, 1, 1, 1, 1, 1, 1]).reshape(1,-1)
