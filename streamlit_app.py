@@ -46,8 +46,8 @@ model_nn.compile(optimizer="adam",loss="binary_crossentropy",metrics=["binary_ac
 # Load Model Weights
 model_nn.load_weights("cardiovascular_model_weights.h5")
 
-features_mean = np.array([53.375, 0, 131.64244, 242.61192, 0, 136.375, 0, 0.88386625, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]).reshape(1,-1)
-features_std = np.array([9.505754, 1, 18.505972, 52.63169, 1, 25.892254, 1, 1.0798302, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]).reshape(1,-1)
+features_mean = np.array([53.375, 0, 131.64244, 242.61192, 0, 136.375, 0, 0.88386625, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]).reshape(1,-1)
+features_std = np.array([9.505754, 1, 18.505972, 52.63169, 1, 25.892254, 1, 1.0798302, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]).reshape(1,-1)
 
 chest_pain_types = np.array(["Asymptomatic (ASY)", "Atypical Angina (ATA)", "Non-Anginal Pain (NAP)", "Typical Angina (TA)"])
 resting_ecg_types = np.array(["LVH (showing probable or definite left ventricular hypertrophy by Estes' criteria)", "Normal",
