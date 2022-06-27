@@ -61,7 +61,7 @@ st_slope_types = np.array(["Downsloping", "Flat", "Upsloping"])
 st.write("# Heart Disease Diagnosis Tool")
 age = st.slider("Age (years)", min_value=0, max_value=100)
 sbp = st.slider("Systolic Blood Pressure (SBP)", min_value=50, max_value=250)
-chol = st.slider("Cholestorol (mg/dL)", min_value=0, max_value=400)
+chol = st.slider("Cholesterol (mg/dL)", min_value=0, max_value=400)
 maxHR = st.slider("Maximum heart rate achieved)", min_value=0, max_value=250)
 old_peak = st.slider("Oldpeak (ST depression induced by exercise relative to rest)", min_value=-10, max_value=10)
 
