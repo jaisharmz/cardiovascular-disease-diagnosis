@@ -6,7 +6,7 @@ from tensorflow.keras import layers
 import numpy as np
 
 hidden_units = 64
-dropout_rate = 0.2
+dropout_rate = 0.4
 
 layers_dimensions = [hidden_units,hidden_units,hidden_units,hidden_units,hidden_units,hidden_units,hidden_units,hidden_units]
 initializer = tf.keras.initializers.GlorotNormal(seed=0)
@@ -44,10 +44,17 @@ model_nn.compile(optimizer="adam",loss="binary_crossentropy",metrics=["binary_ac
 # history_nn_pd = pd.DataFrame(history_nn.history)
 
 # Load Model Weights
-model_nn.load_weights("cardiovascular_model_weights.h5")
+model_nn.load_weights("cardiovascular_model_weights_64_0.4_fourlayers.h5")
 
-features_mean = np.array([53.375, 0, 131.64244, 242.61192, 0, 136.375, 0, 0.88386625, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]).reshape(1,-1)
-features_std = np.array([9.505754, 1, 18.505972, 52.63169, 1, 25.892254, 1, 1.0798302, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]).reshape(1,-1)
+features_mean = np.array([5.33750000e+01, 7.96511628e-01, 1.31831395e+02, 2.43881105e+02,
+                         2.38372093e-01, 1.36375000e+02, 4.09883721e-01, 8.83866279e-01,
+                         5.29069767e-01, 1.97674419e-01, 2.16569767e-01, 5.66860465e-02,
+                         1.99127907e-01, 6.04651163e-01, 1.96220930e-01, 6.83139535e-02,
+                         5.18895349e-01, 4.12790698e-01]).reshape(1,-1)
+features_std = np.array([9.50575484,  0.40259267, 17.81153116, 52.72453095,  0.42608783,
+                       25.89225354,  0.49181201,  1.07983022,  0.49915423,  0.3982452 ,
+                        0.41190691,  0.23124173,  0.39934444,  0.48892549,  0.3971376 ,
+                        0.25228388,  0.49964284,  0.4923358]).reshape(1,-1)
 
 chest_pain_types = np.array(["Asymptomatic (ASY)", "Atypical Angina (ATA)", "Non-Anginal Pain (NAP)", "Typical Angina (TA)"])
 resting_ecg_types = np.array(["LVH (showing probable or definite left ventricular hypertrophy by Estes' criteria)", "Normal",
