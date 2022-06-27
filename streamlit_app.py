@@ -11,7 +11,7 @@ dropout_rate = 0.4
 layers_dimensions = [hidden_units,hidden_units,hidden_units,hidden_units,hidden_units,hidden_units,hidden_units,hidden_units,hidden_units]
 initializer = tf.keras.initializers.GlorotNormal(seed=2) 
 model_nn = keras.Sequential([
-                            layers.BatchNormalization(input_shape=[X_t.shape[1]]),
+                            layers.BatchNormalization(input_shape=[18]),
                             layers.Dense(layers_dimensions[0],kernel_initializer=initializer,bias_initializer='zeros'), 
                             layers.BatchNormalization(),
                             layers.Activation("relu"),
